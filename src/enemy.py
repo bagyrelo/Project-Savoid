@@ -1,22 +1,26 @@
 from pyray import *
 from raylib import *
 
+delta_time = get_frame_time()
+
 class Skeleton:
-    def __init__(self, health, atack, x, y):
+    def __init__(self, health, attack, posx, posy):
         self.health = health
-        self.atack = atack
-        self.x = x
-        self.y = y
-        self.last_attack_time = 0.0
-        self.is_attacking = False
+        self.attack = attack
+        self.posx = posx
+        self.posy = posy
+        self.attack_timer = 3.0
         self.cooldown = 3
 
     def hit(self, target):
-        target.health -= self.atack
-        wait_time(2.0)
+        target.health -= self.attack
 
     def draw(self):
-        return draw_circle(self.x, self.y, 10, RED)
+        return draw_circle(self.posx, self.posy, 10, RED)
     
-    def update(self, player):
-        current_time = GetTime()
+    def update_attack(self, target, delta_time):
+        self.attack_timer += delta_time
+
+        if self.attack_timer >= self.cooldown:
+            self.hit(target)
+            self.attack_timer = 0
