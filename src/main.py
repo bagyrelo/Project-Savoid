@@ -17,7 +17,7 @@ screen_width, screen_height = 800, 600
 init_window(screen_width, screen_height, "Project Savoid")
 set_target_fps(60)
 
-ground = load_texture("assets/ground.png")
+ground = load_texture("Project Savoid/assets/tux.png")
 
 my_player = Player(get_screen_width() // 2, get_screen_height() // 2, 7, 7, 100, 5)
 my_enemy = Skeleton(50, 10, 500, 200)

@@ -18,15 +18,24 @@ class Skeleton:
         target.health -= self.attack
 
     def draw(self):
+<<<<<<< HEAD
          return draw_texture(self.texture, self.posx - self.texture.width // 2, self.posy - self.texture.height // 2, WHITE)
     
     def update(self):
         if not self.is_active():
             return
     
+=======
+        return draw_circle(self.posx, self.posy, 10, RED)
+    
+>>>>>>> 717cf33d719835ecbf1ac8daea3323620c112c4d
     def update_attack(self, target, delta_time):
         self.attack_timer += delta_time
 
         if self.attack_timer >= self.cooldown:
             self.hit(target)
+<<<<<<< HEAD
             self.attack_timer = 0
+=======
+            self.attack_timer = 0
+>>>>>>> 717cf33d719835ecbf1ac8daea3323620c112c4d
